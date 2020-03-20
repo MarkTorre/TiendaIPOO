@@ -1,13 +1,15 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CarritoDeLaCompra {
 	//Atributos
 	private Componente[] productos;
-	private int fecha;
+	private Date fecha;
 	private Cliente c;
 	
 	//Constructores
-	public CarritoDeLaCompra(Componente[] productos, int fecha, Cliente c) {
-		super();
+	public CarritoDeLaCompra(Componente[] productos, Date fecha, Cliente c) {
 		this.productos = productos;
 		this.fecha = fecha;
 		this.c = c;
@@ -15,25 +17,18 @@ public class CarritoDeLaCompra {
 	
 	
 	//Métodos
-	public boolean anyadirProducto(int codigo) {
-		int j = 0;
-		for(int i = 0; i <= productos.length; i++) {
-			if(this.productos[i].getCodigo() == codigo) {
-				j = i;
-			}
-			if(i == productos.length && j != 0) {
-				productos[i] = productos[j];
-				return true;
-			}
-		}
-		return false;
+	public void anyadirProducto(Fabricante fabricante, int codigo, String descripcion, double pvp) {
+		this.productos[productos.length].setFabricante(fabricante);
+		this.productos[productos.length].setCodigo(codigo);
+		this.productos[productos.length].setDescripcion(descripcion);
+		this.productos[productos.length].setPvp(pvp);
 	}
 
 	public boolean eliminarProducto(int codigo) {	
 		for(int i = 0; i < productos.length; i++) {
 			if(this.productos[i].getCodigo() == codigo) {
 				for(int j = i; j < productos.length; j++) {
-					this.productos[i] = productos[i + 1];
+					this.productos[j] = productos[j + 1];
 				}
 				return true;
 			}
@@ -42,7 +37,7 @@ public class CarritoDeLaCompra {
 		return false;
 	}
 	
-	public Venta comprar(int fecha, String pago) {
+	public Venta comprar(Date fecha, String pago) {
 		Venta v = new Venta(productos, c, fecha, pago);
 		if(pago != "transferencia bancaria" | pago != "pago con tarjeta") {
 			System.out.println("Metodo de pago incorrecto");
@@ -67,11 +62,11 @@ public class CarritoDeLaCompra {
 	
 	
 	//Getters y setters
-	public int getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(int fecha) {
+	public Date setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
