@@ -9,9 +9,9 @@ public class CarritoDeLaCompra {
 	private Componente[] productos;
 	private Date fecha;
 	private Cliente c;
-
+	private int numComp=0;
 	public static int MaxBought= 1000;
-	public static int numComp= 0;
+
 
 	// Constructores
 	public CarritoDeLaCompra(String fecha, Cliente c) {
@@ -31,8 +31,8 @@ public class CarritoDeLaCompra {
 	public String toString() {
 		String s = "\n";
 		double precioTot = 0;
-		if (productos.length > 0) {
-			for (int i = 0; i < productos.length; i++) {
+		if (numComp > 0) {
+			for (int i = 0; i < numComp; i++) {
 				if(productos[i] != null){
 				s += this.productos[i].toString() + "\n\n";
 				precioTot += productos[i].getPvp();
@@ -60,27 +60,29 @@ public class CarritoDeLaCompra {
 		for(int i = 0; i < tienda.length; i++){
 				if(tienda[i].getCodigo()== codigo){
 					Componente componente = new Componente(tienda[i]);
+					setComponente(componente);
 					numComp=numComp+1;
-					setComponente(tienda[i]);
 					return true;
 				}
 		}	
 		return false;
 	}
-	 
+
 
 	public boolean eliminarProducto(int codigo) {
-		for (int i = 0; i < productos.length; i++) {
+		for (int i = 0; i < numComp; i++) {
 			if (this.productos[i].getCodigo() == codigo) {
-				for (int j = i; j < productos.length; j++) { // productos.length-1
-					this.productos[j] = productos[i + 1]; // this.productos[j] = productos[j + 1];
+				for (int j = i+1; j <= numComp; j++) { // Aquí ponemos j<=numComp para que en la ultima posición nos ponga un null 
+					this.productos[j-1] = this.productos[j]; // this.productos[j] = productos[j + 1];
 				}
+				numComp--;
 				return true;
 			}
 		}
 		System.out.println("No hay ningun objeto con ese codigo."); // Poner el System.out.println() en el test
 		return false;
 	}
+
 
 	public Venta comprar(int fecha, boolean pago) {
 		Date now= new Date();
@@ -116,8 +118,6 @@ public class CarritoDeLaCompra {
 	}
 
 	public void setComponente(Componente componente){
-		for(int i = 0; i < this.productos.length; i++){
-		}
 			this.productos[numComp]= componente;
 	
 	}
