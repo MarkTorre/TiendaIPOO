@@ -11,6 +11,11 @@ public class Componente {
         setPvp(pvp);
     }
 
+    public Componente(Componente comp){
+        this(comp.getFabricante(),comp.getCodigo(), comp.getDescripcion(), comp.getPvp());
+
+    }
+
 /*------------------ toString ---------------------*/
 
     public String toString(){

@@ -2,8 +2,10 @@ public class Cliente{
     private int codigo;
     private String nombre, apellido,tarjeta;
 
-    public Cliente(){
-
+    public Cliente(int codigo,String nombre, String apellido, String tarjeta){
+            setCodigo(codigo);
+            setNombre(nombre);
+            setNumeroTarjeta(tarjeta);
     }
 
 /*----------------Metodos Setters ------------------*/
