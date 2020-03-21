@@ -16,10 +16,13 @@ public class TestTienda {
             if (decide.equals("SI") == true || decide.equals("si") == true) {
                 System.out.println("Introduzca el codigo del componente que desea introducir");
                 code = scan.nextInt();
-                miCarrito.anyadirProducto(code, tienda);
+                if(!miCarrito.anyadirProducto(code, tienda)){                                                           
+                    System.out.println("\n\tEl codigo que ha introducido no existe.\n");
+                }
+
 
             } else if (decide.equals("NO") == true || decide.equals("no") == true) {
-                System.out.println("Cesta de compra actual, usted tiene:\n" + miCarrito.toString());
+                System.out.println("\n\nCesta de compra actual. Usted tiene:\n" + miCarrito.toString());
 
                 seguir = false;
 
@@ -40,17 +43,37 @@ public class TestTienda {
             if (decide.equals("SI") == true || decide.equals("si") == true) {
                 System.out.println("Introduzca el codigo del componente que desea retirar");
                 code = scan.nextInt();
-                miCarrito.eliminarProducto(code);
-                
+                if(!miCarrito.eliminarProducto(code)){
+                    System.out.println("\n\tNo hay ningun objeto con ese codigo");
+                };
+
             } else if (decide.equals("NO") == true || decide.equals("no") == true) {
-                System.out.println("Cesta de compra actual, usted tiene:\n" + miCarrito.toString());
+                System.out.println("\n\nCesta de compra actual, usted tiene:\n" + miCarrito.toString());
                 seguir = false;
             }
         }
     }
 
+
+    public static void pagarCompra(CarritoDeLaCompra miCarrito){
+        int decide;
+        Scanner scan = new Scanner(System.in);
+        Venta tiquetVenta;
+
+        System.out.println("--------------Decida el Método de pago que quiere usar-------------- \n"+ "Con tarjeta o sin Tarjeta(1/0):");
+        decide= scan.nextInt();
+
+        if(decide == 1){
+            tiquetVenta = miCarrito.comprar(true); 
+            System.out.println(tiquetVenta.toString());
+        }else{
+            tiquetVenta = miCarrito.comprar(false); 
+            System.out.println(tiquetVenta.toString());
+        };
+
+    }
     public static void main(String[] args) {
-        // Scanner scan = new Scanner(System.in);
+         Scanner scan = new Scanner(System.in);
         System.out.println("-----------------Bienvenido a la tienda de informatica--------------");
 
         Fabricante amd = new Fabricante("AMD", 1000, 609344560);
@@ -66,8 +89,24 @@ public class TestTienda {
         Cliente marc = new Cliente(56789, "Marc", "Torrecilla", "3244 5356 2345");
 
         CarritoDeLaCompra miCarrito = new CarritoDeLaCompra("21/03/2020", sergio);
+        String decide;
+
+        boolean comprar = false;
+
+        while(!comprar ){
         seguirComprando(miCarrito, tienda);
         retirarProducto(miCarrito);
+        System.out.println("Quiere proceder al Pago? SI/NO");
+        decide = scan.next();
+        if (decide.equals("SI") == true || decide.equals("si") == true) {
+            comprar=true;
+        }else if (decide.equals("NO" ) == true || decide.equals("no") == true){
+            comprar=false;
+          }
+        }
+       pagarCompra(miCarrito);
+      
+
 
     }
 }

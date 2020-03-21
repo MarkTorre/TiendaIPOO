@@ -1,7 +1,10 @@
 public class Cliente{
+
+    //Atributos Ojeto (A.O) 
     private int codigo;
     private String nombre, apellido,tarjeta;
 
+    //Constructor Cliente 
     public Cliente(int codigo,String nombre, String apellido, String tarjeta){
             setCodigo(codigo);
             setNombre(nombre);
@@ -9,7 +12,6 @@ public class Cliente{
     }
 
 /*----------------Metodos Setters ------------------*/
-
     public void setCodigo(int codigo) {
         this.codigo=codigo;
     }
@@ -17,6 +19,7 @@ public class Cliente{
     public void setNombre(String nombre){
         this.nombre= nombre;
     }
+
     public void setApellido(String apellido){
         this.apellido= apellido;
     }

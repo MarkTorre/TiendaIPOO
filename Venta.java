@@ -1,21 +1,68 @@
 import java.util.Date;
 
 public class Venta {
+    //Atributos Objeto(aA.O)
     private Date fecha;
     private Componente[] productos;
+    public int numComp;
     private Cliente c;
     private  boolean metodopago;
-    
-    public Venta(Componente[] producto,boolean metodopago, Cliente c, Date fecha ){
+    //Constructor Venta
+    public Venta(Componente[] producto,boolean metodopago, Cliente c,Date fecha , int numComp ){
            
-            setComponente(productos);
+            setComponente(producto);
             setMetodoPago(metodopago);
             setCliente(c);
             setFecha(fecha);
+            this.numComp= numComp;
 
+    }
+    //Método toString
+    public String toString(){
+        
+        String s = "\n";
+		double precioTot = 0;
+        String pago; 
+
+        if(this.metodopago){
+                pago="transferencia bancaria";
+        }else{
+                pago= "pago con tarjeta";
+        }
+
+		if (this.numComp > 0) {
+            
+        System.out.println("************Venta Realizada***********" + 
+        "\n Fecha: " + getFechaCompra() +"\n Método de pago: " + pago  );
+
+			for (int i = 0; i < this.numComp; i++) {
+				if(this.productos[i] != null){
+				s += this.productos[i].toString() + "\n\n";
+				precioTot += productos[i].getPvp();
+				}
+			}
+			return s += "Precio total: " + precioTot+ "\n"  ;
+		} else {
+			return "No hay productos en el carrito se ha anulado la venta.";
+		} 
     }
 
 /*******************Métodos Getter*****************/
+    public Componente[] getComponente(){
+        return this.productos;
+    }
+
+    public boolean getMetodoPago(){
+        return this.metodopago;
+    }
+
+    public Cliente getCliente(){
+        return this.c;
+    }
+
+    public Date getFechaCompra(){
+        return this.fecha;
+    }
 /******************Métodos Setters*****************/
   
     public void setComponente(Componente[] productos){

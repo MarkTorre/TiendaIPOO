@@ -1,16 +1,19 @@
 public class Componente {
+    //Atributos de Objeto
     private Fabricante fabricante;
     private int codigo;
     private String descripcion;
     private double pvp;
 
+    //Constructor Componente
     public Componente(Fabricante fabricante, int codigo, String descripcion, double pvp){
         setFabricante(fabricante);
         setCodigo(codigo);
         setDescripcion(descripcion);
         setPvp(pvp);
     }
-
+    
+    //Constructor Copia
     public Componente(Componente comp){
         this(comp.getFabricante(),comp.getCodigo(), comp.getDescripcion(), comp.getPvp());
 
@@ -19,8 +22,8 @@ public class Componente {
 /*------------------ toString ---------------------*/
 
     public String toString(){
-        return "Producto: " + getCodigo() + " " + getDescripcion() +
-                "\nPrecio: " + getPvp() + "\nFabricante: " + getFabricante().getNombre() +
+        return "\tProducto: " + getCodigo() + " " + getDescripcion() +
+                "\n\tPrecio: " + getPvp() + "\n\tFabricante: " + getFabricante().getNombre() +
                 "( " + getFabricante().getCodigo() + " )";
 }
 
