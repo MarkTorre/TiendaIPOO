@@ -30,6 +30,7 @@ public class TestTienda {
         String decide;
         int code;
 
+<<<<<<< HEAD
         while (seguir)
         	{
             System.out.println("Quiere añadir un componente? si/no");
@@ -44,6 +45,19 @@ public class TestTienda {
 
             } else if (decide.equals("NO") || decide.equals("no") ) 
             {
+=======
+        while (seguir == true) {
+            System.out.println("Quiere añadir un componente? si/no");
+            decide = scan.next();
+            if (decide.equals("SI") == true || decide.equals("si") == true) {
+                System.out.println("Introduzca el código del componente que desea añadir");
+                code = scan.nextInt();
+                if(!miCarrito.anyadirProducto(code, tienda)){                                                           
+                    System.out.println("\n\tEl código que ha introducido no existe.\n");
+                }
+
+            } else if (decide.equals("NO") == true || decide.equals("no") == true) {
+>>>>>>> 322c69bdc9d781ca7aaa70e71f3cbe4ffa548090
                 System.out.println("\n\nCesta de compra actual. Usted tiene:\n" + miCarrito.toString());
                 seguir = false;
             }
@@ -57,18 +71,29 @@ public class TestTienda {
         String decide;
         int code;
 
+<<<<<<< HEAD
         while (seguir)
         	{
             System.out.println("Quiere retirar un componente? si/no");
             decide = scan.next();
             if (decide.equals("SI") || decide.equals("si") ) {
+=======
+        while (seguir == true) {
+            System.out.println("Quiere retirar un componente? si/no");
+            decide = scan.next();
+            if (decide.equals("SI") == true || decide.equals("si") == true) {
+>>>>>>> 322c69bdc9d781ca7aaa70e71f3cbe4ffa548090
                 System.out.println("Introduzca el código del componente que desea retirar");
                 code = scan.nextInt();
                 if(!miCarrito.eliminarProducto(code)){
                     System.out.println("\n\tNo hay ningún objeto con ese código");
                 }
                 
+<<<<<<< HEAD
             } else if (decide.equals("NO") || decide.equals("no") ) {
+=======
+            } else if (decide.equals("NO") == true || decide.equals("no") == true) {
+>>>>>>> 322c69bdc9d781ca7aaa70e71f3cbe4ffa548090
                 System.out.println("\n\nCesta de compra actual. Usted tiene:\n" + miCarrito.toString());
                 seguir = false;
             }
@@ -128,7 +153,11 @@ public class TestTienda {
         decide = scan.next();
         if (decide.equals("SI") || decide.equals("si") ) {
             comprar=true;
+<<<<<<< HEAD
         } else if (decide.equals("NO" )  || decide.equals("no") ){
+=======
+        } else if (decide.equals("NO" ) == true || decide.equals("no") == true){
+>>>>>>> 322c69bdc9d781ca7aaa70e71f3cbe4ffa548090
             comprar=false;
           }
         }
