@@ -4,25 +4,6 @@ import java.util.Date;
 
 public class TestTienda {
 
-
-    // J: Aquest mètode no hauria d'estar aquí no és un mètode d'aquesta classe
-	// J: Tampoc és un mètode d'objecte, no depen de cap objecte per fer el càlcul,
-	// J: i per tant on us calgui (probablement al test) serà static
-	//Métodos de conversión
-	public static Date fromStringToDate(String fechaS) {
-		// J: Manca el control d'errors, quan el String no és una data dona multiples excepcions
-		// J: Si ho voleu evitar s'hauria de fer un bloc: try catch
-    
-		String [] fecha = fechaS.split("/");
-		int dia = Integer.parseInt(fecha[0]); 
-		int mes = Integer.parseInt(fecha[1]);
-		int año = Integer.parseInt(fecha[2]);
-
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(año,mes,dia);
- 
-		return calendar.getTime();
-    };
     
     public static void seguirComprando(CarritoDeLaCompra miCarrito, Componente[] componente) {
         Scanner scan = new Scanner(System.in);
@@ -30,7 +11,6 @@ public class TestTienda {
         String decide;
         int code;
 
-<<<<<<< HEAD
         while (seguir)
         	{
             System.out.println("Quiere añadir un componente? si/no");
@@ -45,19 +25,6 @@ public class TestTienda {
 
             } else if (decide.equals("NO") || decide.equals("no") ) 
             {
-=======
-        while (seguir == true) {
-            System.out.println("Quiere añadir un componente? si/no");
-            decide = scan.next();
-            if (decide.equals("SI") == true || decide.equals("si") == true) {
-                System.out.println("Introduzca el código del componente que desea añadir");
-                code = scan.nextInt();
-                if(!miCarrito.anyadirProducto(code, tienda)){                                                           
-                    System.out.println("\n\tEl código que ha introducido no existe.\n");
-                }
-
-            } else if (decide.equals("NO") == true || decide.equals("no") == true) {
->>>>>>> 322c69bdc9d781ca7aaa70e71f3cbe4ffa548090
                 System.out.println("\n\nCesta de compra actual. Usted tiene:\n" + miCarrito.toString());
                 seguir = false;
             }
@@ -71,29 +38,18 @@ public class TestTienda {
         String decide;
         int code;
 
-<<<<<<< HEAD
         while (seguir)
         	{
             System.out.println("Quiere retirar un componente? si/no");
             decide = scan.next();
             if (decide.equals("SI") || decide.equals("si") ) {
-=======
-        while (seguir == true) {
-            System.out.println("Quiere retirar un componente? si/no");
-            decide = scan.next();
-            if (decide.equals("SI") == true || decide.equals("si") == true) {
->>>>>>> 322c69bdc9d781ca7aaa70e71f3cbe4ffa548090
                 System.out.println("Introduzca el código del componente que desea retirar");
                 code = scan.nextInt();
                 if(!miCarrito.eliminarProducto(code)){
                     System.out.println("\n\tNo hay ningún objeto con ese código");
                 }
                 
-<<<<<<< HEAD
             } else if (decide.equals("NO") || decide.equals("no") ) {
-=======
-            } else if (decide.equals("NO") == true || decide.equals("no") == true) {
->>>>>>> 322c69bdc9d781ca7aaa70e71f3cbe4ffa548090
                 System.out.println("\n\nCesta de compra actual. Usted tiene:\n" + miCarrito.toString());
                 seguir = false;
             }
@@ -140,12 +96,13 @@ public class TestTienda {
 
         Cliente sergio = new Cliente(01234, "Sergio", "Nieto", "4502 2304 768");
         Cliente marc = new Cliente(56789, "Marc", "Torrecilla", "3244 5356 2345");
+        
+        Date now= new Date();
 
-        CarritoDeLaCompra miCarrito = new CarritoDeLaCompra(fromStringToDate("21/03/2020"), sergio);
+        CarritoDeLaCompra miCarrito = new CarritoDeLaCompra(now, sergio);
+        
         String decide;
-
         boolean comprar = false;
-
         while(!comprar ){
         seguirComprando(miCarrito, tienda);
         retirarProducto(miCarrito);
@@ -153,11 +110,7 @@ public class TestTienda {
         decide = scan.next();
         if (decide.equals("SI") || decide.equals("si") ) {
             comprar=true;
-<<<<<<< HEAD
         } else if (decide.equals("NO" )  || decide.equals("no") ){
-=======
-        } else if (decide.equals("NO" ) == true || decide.equals("no") == true){
->>>>>>> 322c69bdc9d781ca7aaa70e71f3cbe4ffa548090
             comprar=false;
           }
         }
