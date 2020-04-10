@@ -8,7 +8,13 @@ public class Fabricante{
         setCodigo(codigo);
         setTelefono(telefono);
     }
+/*----------------toString() ------------------*/
 
+    public String toString(){
+
+        return "\n\tnombre: " +this.nombre+ "\n\tcódigo: " + 
+        this.codigo + "\n\tteléfono: " +this.telefono;
+    }
 /*----------------Métodos Setters ------------------*/
 
     public void setNombre(String nombre) {
@@ -34,6 +40,7 @@ public class Fabricante{
     public int getTelefono(){
         return this.telefono;
     }
+
 
 
 }

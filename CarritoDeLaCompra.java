@@ -12,21 +12,22 @@ public class CarritoDeLaCompra {
 	private int numComp=0;
 
 	//Atributo Classe (A.C)
-	public static int MaxBought= 1000;
+	public static int MaxBought= 2; //1000
 
 
-	// Constructor Tabla Vacia
-	public CarritoDeLaCompra(String fecha, Cliente c) {
+	// Constructor Vacio
+	public CarritoDeLaCompra(Date fecha, Cliente c) {
 		setFecha(fecha);
 		this.c = c;
 		this.productos= new Componente[MaxBought];
 	}
-	//Constructor Tabla Definida
-	public CarritoDeLaCompra(Componente[] productos, String fecha, Cliente c) {
-		super();
-		this.productos = productos;
-		setFecha(fecha);
-		this.c = c;
+
+	//Constructor Copia
+	public CarritoDeLaCompra(CarritoDeLaCompra carrito) {
+		this.productos= carrito.getProductos(); 
+		setFecha(carrito.getFecha());
+		this.c= carrito.getCliente();
+		this.numComp= carrito.getNumeroComponentes();
 	}
 
 	
@@ -44,36 +45,32 @@ public class CarritoDeLaCompra {
 		} else {
 			return "\t No hay productos en el carrito\n";
 		}
-
-
 	}
-	//Métodos Lista (Tabla) Componentes
-	public boolean anyadirProducto(int codigo, Componente tienda[] ) { 
-		for(int i = 0; i < tienda.length; i++){
-				if(tienda[i].getCodigo()== codigo){
-					Componente componente = new Componente(tienda[i]);
-					setComponente(componente);
-					this.numComp=this.numComp+1;
-					return true;
-				}
-		}	
-		return false;
+	
+	public boolean anyadirProducto(Componente componente ) { 
+			this.numComp++;
+			if (this.numComp < MaxBought ){this.productos[numComp]= componente;
+			return true;}
+			return false;
 	}
-
 
 	public boolean eliminarProducto(int codigo) {
 		for (int i = 0; i < numComp; i++) {
 			if (this.productos[i].getCodigo() == codigo) {
-				for (int j = i+1; j <= numComp; j++) { // Aquí ponemos j<=numComp para que en la última posición nos ponga un null 
+				for (int j = i+1; j <= numComp; j++) { 
+					// Aquí ponemos j<=numComp para que en la última posición nos ponga un null 
+					// No es pot fer ja que si la taula està plena es produeix un error java.lang.ArrayIndexOutOfBoundsException
 					this.productos[j-1] = this.productos[j]; 
 				}
 				this.numComp--;
+				// J: Si voleu posar l'últim a null s'ha de fer aquí
+				// J: this.productos[this.numComp] = null;
+				// J: Fixeu-vos que al haver decrementat el número segur que mai us podeu sortir de la taula
 				return true;
 			}
 		}
 		return false;
 	}
-
 
 	public Venta comprar(boolean pago) {
 		Componente[] componentes= this.productos;
@@ -83,38 +80,25 @@ public class CarritoDeLaCompra {
 		return v;
 	}
 
-
-
 	//Métodos Getters y setters
+
+	public Componente[] getProductos(){
+		return this.productos;
+	}
 	public int getNumeroComponentes(){
 		return this.numComp;
 	}
 	public Date getFecha() {
-		return fecha;
+		return this.fecha;
 	}
 
-	public void setFecha(String fecha) {
-		Date fechaD= fromStringToDate(fecha);
-		this.fecha = fechaD;
+	public Cliente getCliente() {
+		return this.c;
 	}
-
-	public void setComponente(Componente componente){
-			this.productos[numComp]= componente;
+	
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
-
-	//Métodos de conversión
-	public Date fromStringToDate(String fechaS) {
-
-		String [] fecha = fechaS.split("/");
-		int dia = Integer.parseInt(fecha[0]); 
-		int mes = Integer.parseInt(fecha[1]);
-		int año = Integer.parseInt(fecha[2]);
-
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(año,mes,dia);
- 
-		return calendar.getTime();
-	};
-
 
 }
+

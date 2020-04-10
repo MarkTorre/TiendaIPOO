@@ -71,18 +71,14 @@ public class Venta {
 
     public void setMetodoPago(boolean metodopago){
         this.metodopago=metodopago;
-
     }
 
     public void setCliente(Cliente c) {
         this.c=c;
     }
 
-
     public void setFecha(Date fecha){
         this.fecha= fecha;
     };
-
-
 
 }

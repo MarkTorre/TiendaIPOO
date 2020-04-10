@@ -10,7 +10,11 @@ public class Cliente{
             setNombre(nombre);
             setNumeroTarjeta(tarjeta);
     }
-
+/*----------------Metodos toString() ------------------*/
+    public String toString(){
+        return "\n\tnombre:"+this.nombre+"\n\tapellido: "+this.apellido
+        +"\n\tcodigo:"+this.codigo+"\n\ttarjeta: " + this.tarjeta;
+    }
 /*----------------Metodos Setters ------------------*/
     public void setCodigo(int codigo) {
         this.codigo=codigo;
