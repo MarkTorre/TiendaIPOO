@@ -17,11 +17,35 @@ public class TestTienda {
             decide = scan.next();
             if (decide.equals("SI") || decide.equals("si")) 
             	{
-                System.out.println("Introduzca el código del componente que desea añadir");
+                System.out.println("Introduzca el componente que desea añadir");
                 code = scan.nextInt();
-                if(!miCarrito.anyadirProducto(componente[1])){                                                              
-                    System.out.println("\n\tNo se pueden añadir más componentes\n");
-                }
+                switch(code){
+                    case 1: 
+                            if(!miCarrito.anyadirProducto(componente[0])){                                                              
+                                System.out.println("\n\tNo se pueden añadir más componentes\n");
+                            } 
+                            break;
+                    case 2: 
+                            if(!miCarrito.anyadirProducto(componente[1])){                                                              
+                                System.out.println("\n\tNo se pueden añadir más componentes\n");
+                            } 
+                            break;
+                    case 3: 
+                            if(!miCarrito.anyadirProducto(componente[2])){                                                              
+                                System.out.println("\n\tNo se pueden añadir más componentes\n");
+                            } 
+                            break;    
+                    case 4: 
+                            if(!miCarrito.anyadirProducto(componente[3])){                                                              
+                                System.out.println("\n\tNo se pueden añadir más componentes\n");
+                            } 
+                            break;
+                    case 5: 
+                            if(!miCarrito.anyadirProducto(componente[4])){                                                              
+                                System.out.println("\n\tNo se pueden añadir más componentes\n");
+                            } 
+                            break; 
+            }
 
             } else if (decide.equals("NO") || decide.equals("no") ) 
             {
@@ -91,7 +115,7 @@ public class TestTienda {
         System.out.println("Productos:\n");
         
         for(int i = 0; i < tienda.length; i++) {
-        	System.out.println(tienda[i].toString() + "\n");
+        	System.out.println("\nSeleccione ("+i+")\n"+tienda[i].toString() + "\n");
         }
 
         Cliente sergio = new Cliente(01234, "Sergio", "Nieto", "4502 2304 768");

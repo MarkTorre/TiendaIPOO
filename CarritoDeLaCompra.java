@@ -48,8 +48,8 @@ public class CarritoDeLaCompra {
 	}
 	
 	public boolean anyadirProducto(Componente componente ) { 
-			this.numComp++;
-			if (this.numComp < MaxBought ){this.productos[numComp]= componente;
+		
+			if (this.numComp < MaxBought ){this.productos[numComp]= componente; this.numComp++;
 			return true;}
 			return false;
 	}
@@ -57,15 +57,14 @@ public class CarritoDeLaCompra {
 	public boolean eliminarProducto(int codigo) {
 		for (int i = 0; i < numComp; i++) {
 			if (this.productos[i].getCodigo() == codigo) {
-				for (int j = i+1; j <= numComp; j++) { 
-					// Aquí ponemos j<=numComp para que en la última posición nos ponga un null 
-					// No es pot fer ja que si la taula està plena es produeix un error java.lang.ArrayIndexOutOfBoundsException
+				if(i == MaxBought-1){this.productos[ MaxBought-1]=null;
+				this.numComp--;
+				return true;
+				}
+				for (int j = i+1; j < numComp; j++) { 
 					this.productos[j-1] = this.productos[j]; 
 				}
 				this.numComp--;
-				// J: Si voleu posar l'últim a null s'ha de fer aquí
-				// J: this.productos[this.numComp] = null;
-				// J: Fixeu-vos que al haver decrementat el número segur que mai us podeu sortir de la taula
 				return true;
 			}
 		}
