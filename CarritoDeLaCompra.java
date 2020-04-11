@@ -47,7 +47,7 @@ public class CarritoDeLaCompra {
 		}
 	}
 	
-	public boolean anyadirProducto(Componente componente ) { 
+	public boolean añadirProducto(Componente componente ) { 
 		
 			if (this.numComp < MaxBought ){this.productos[numComp]= componente; this.numComp++;
 			return true;}

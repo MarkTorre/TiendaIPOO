@@ -21,27 +21,27 @@ public class TestTienda {
                 code = scan.nextInt();
                 switch(code){
                     case 1: 
-                            if(!miCarrito.anyadirProducto(componente[0])){                                                              
+                            if(!miCarrito.añadirProducto(componente[0])){                                                              
                                 System.out.println("\n\tNo se pueden añadir más componentes\n");
                             } 
                             break;
                     case 2: 
-                            if(!miCarrito.anyadirProducto(componente[1])){                                                              
+                            if(!miCarrito.añadirProducto(componente[1])){                                                              
                                 System.out.println("\n\tNo se pueden añadir más componentes\n");
                             } 
                             break;
                     case 3: 
-                            if(!miCarrito.anyadirProducto(componente[2])){                                                              
+                            if(!miCarrito.añadirProducto(componente[2])){                                                              
                                 System.out.println("\n\tNo se pueden añadir más componentes\n");
                             } 
                             break;    
                     case 4: 
-                            if(!miCarrito.anyadirProducto(componente[3])){                                                              
+                            if(!miCarrito.añadirProducto(componente[3])){                                                              
                                 System.out.println("\n\tNo se pueden añadir más componentes\n");
                             } 
                             break;
                     case 5: 
-                            if(!miCarrito.anyadirProducto(componente[4])){                                                              
+                            if(!miCarrito.añadirProducto(componente[4])){                                                              
                                 System.out.println("\n\tNo se pueden añadir más componentes\n");
                             } 
                             break; 

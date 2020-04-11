@@ -11,11 +11,20 @@ public class MainTienda {
       Cliente arthur= new Cliente(7655421, "Arthut", "Shelby","1243412214132R");
       Cliente elephantMan = new Cliente(2131324, "Joseph", "Merrick", "3214123123"); 
       Cliente senyorX= new Cliente(4256235, "Senyor", "X", "32141233142O");
+
+      tiendaOnline.setCliente(thomas); 
+      tiendaOnline.setCliente(arthur); 
+      tiendaOnline.setCliente(elephantMan); 
+      tiendaOnline.setCliente(senyorX); 
       /*Fabricantes */
       Fabricante amd = new Fabricante("AMD", 1000, 609344560);
       Fabricante intel = new Fabricante("Intel", 2000, 609344560);
       Fabricante apple = new Fabricante("Apple", 3000, 609344560);
      
+      tiendaOnline.setFabricante(amd);
+      tiendaOnline.setFabricante(intel);
+      tiendaOnline.setFabricante(apple);
+
       //3.
      Componente procesador1 = new Componente(amd, 1000, "Procesador AMD RAEDON", 320.0);
      Componente procesador2= new Componente(intel, 1001, "Procesador Intel Core i7", 387.78);
@@ -28,7 +37,6 @@ public class MainTienda {
      ProductoEnStock stockModulo = new ProductoEnStock(modulo,150);
      ProductoEnStock stockPortatil = new ProductoEnStock(portatil,150);
      ProductoEnStock stockTablet = new ProductoEnStock(tablet,150);
-
      //4.
 
      tiendaOnline.setProductoEnStock(stockProcesador1);
@@ -41,12 +49,10 @@ public class MainTienda {
      Date now1= new Date();
      CarritoDeLaCompra miCarrito = new CarritoDeLaCompra(now1, thomas);
 
-     miCarrito.anyadirProducto(procesador1);
-     miCarrito.anyadirProducto(procesador2);
-     miCarrito.anyadirProducto(modulo);
-     miCarrito.anyadirProducto(portatil);
-     miCarrito.anyadirProducto(tablet);
 
+      /*Llamar método añadir producto al carrito y el método de añadir carrito tienda online */
+    
+    
     //6. A medias 7.
     //(true/false --> Con Tarjeta/Sin Tarjeta)
     miCarrito.comprar(true);
