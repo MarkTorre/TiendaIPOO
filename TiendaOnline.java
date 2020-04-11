@@ -61,8 +61,7 @@ public String showFabricantes(){
 }
 
 
-public boolean setProductoEnStock(Componente Producto, int cantidad){
-    ProductoEnStock pStock= new ProductoEnStock(Producto, cantidad);
+public boolean setProductoEnStock(ProductoEnStock pStock){
     for(ProductoEnStock componente : this.inventario){
         if(componente.getComponente() == pStock.getComponente()){
             return false;
