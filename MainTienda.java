@@ -1,3 +1,4 @@
+import java.util.Date;
 
 public class MainTienda {
   public static void main(String[] args){
@@ -36,6 +37,33 @@ public class MainTienda {
      tiendaOnline.setProductoEnStock(stockPortatil);
      tiendaOnline.setProductoEnStock(stockTablet);
 
-     
+     //5.
+     Date now1= new Date();
+     CarritoDeLaCompra miCarrito = new CarritoDeLaCompra(now1, thomas);
+
+     miCarrito.anyadirProducto(procesador1);
+     miCarrito.anyadirProducto(procesador2);
+     miCarrito.anyadirProducto(modulo);
+     miCarrito.anyadirProducto(portatil);
+     miCarrito.anyadirProducto(tablet);
+
+    //6. A medias 7.
+    //(true/false --> Con Tarjeta/Sin Tarjeta)
+    miCarrito.comprar(true);
+    
+    //8.
+    System.out.println(tiendaOnline.showStockTienda());
+
+    //9.
+
+    
+    //10.
+    System.out.println(tiendaOnline.showStockTienda());
+
+    //11.
+
+    //12.
+
+
   }
 }
