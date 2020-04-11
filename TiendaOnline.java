@@ -12,8 +12,12 @@ public class TiendaOnline {
     private int numCliente, numFabricante, numCarrito, numInventario, numVenta;
     private static int MaxCliente, MaxFabricante, MaxCarrito, MaxInventario, MaxVenta;
 
-    public TiendaOnline(int C){
-
+    public TiendaOnline(){
+        this.listaCliente = new Cliente[MaxCliente];
+        this.listaFabricante = new Fabricante[MaxFabricante];
+        this.listaCarrito = new CarritoDeLaCompra[MaxCarrito];
+        this.inventario = new ProductoEnStock[MaxInventario];
+        this.listaVentas = new Venta[MaxVenta];
     }
 
 /*--------Métodos SETTERS-----------*/
@@ -90,7 +94,7 @@ public boolean setVentas(Venta v){
 }
 
 public String muestraVentas(Cliente c){   //acabar..
-    String s;
+    String s="";
     for(Venta v: this.listaVentas){
         s= s+ v.toString();
     }
@@ -102,7 +106,7 @@ public void comprarCarro(int posicionCarro, boolean tipoPago){ //*falta actualiz
 }
 
 //9. Revisar
-
+/*
 public void devolucioComponente(Date fecha, Cliente c, String codigoComponente){
         for(Venta venta: this.listaVentas){
             if(venta.getFechaCompra() == fecha && venta.getCliente() == c){
@@ -116,7 +120,7 @@ public void devolucioComponente(Date fecha, Cliente c, String codigoComponente){
             
         }
 }
-
+*/
 //10. Hecho
 public String showStockTienda(){
     String s="\n";
