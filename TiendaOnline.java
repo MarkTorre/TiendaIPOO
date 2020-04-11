@@ -10,10 +10,12 @@ public class TiendaOnline {
     private ProductoEnStock[] inventario;
     private Venta[] listaVentas;
     private int numCliente, numFabricante, numCarrito, numInventario, numVenta;
-    private int MaxCliente, MaxFabricante, MaxCarrito, MaxInventario, MaxVenta;
+    private static int MaxCliente, MaxFabricante, MaxCarrito, MaxInventario, MaxVenta;
+
     public TiendaOnline(int C){
 
     }
+
 /*--------Métodos SETTERS-----------*/
 /*NOTA: condicionarlos para que no hayan 2 clientes */
 public boolean setCliente(Cliente cliente){
@@ -67,6 +69,8 @@ public boolean setProductoEnStock(Componente Producto, int cantidad){
     return true;
 }
 
+
+
 public boolean setCarritoDeLaCompra(Cliente c, Date fecha){
     CarritoDeLaCompra carrito= new CarritoDeLaCompra(fecha, c);
     for(CarritoDeLaCompra listacarro: this.listaCarrito ){
@@ -85,11 +89,43 @@ public boolean setVentas(Venta v){
    
 }
 
-public String muestraVentas(){   //acabar..
+public String muestraVentas(Cliente c){   //acabar..
     String s;
     for(Venta v: this.listaVentas){
         s= s+ v.toString();
     }
     return s;
 }
+//8. Hecho
+public void comprarCarro(int posicionCarro, boolean tipoPago){ //*falta actualizar el stock...
+    this.listaCarrito[posicionCarro].comprar(tipoPago);
+}
+
+//9. Revisar
+
+public void devolucioComponente(Date fecha, Cliente c, String codigoComponente){
+        for(Venta venta: this.listaVentas){
+            if(venta.getFechaCompra() == fecha && venta.getCliente() == c){
+                venta.
+                for(Componente comp: venta.getComponente()){
+                    if(comp.getCodigo() == codigoComponente){
+                        
+                    }
+                }
+            }
+            
+        }
+}
+
+//10. Hecho
+public String showStockTienda(){
+    String s="\n";
+    for(ProductoEnStock prodStock: this.inventario){
+        s= s+ "Producto en Stock: \n" + prodStock.getComponente().getDescripcion()+
+        "\n\t Código interno: " + prodStock.getComponente().getCodigo()+
+        "\n\t Cantidad disponible: " + prodStock.getDisponible();
+    }
+    return s;
+}
+
 }
