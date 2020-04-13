@@ -20,28 +20,27 @@ public class Venta {
     //Método toString
     public String toString(){
         
-        String s = "\n";
+        String s = "";
 		double precioTot = 0;
         String pago; 
 
         if(this.metodopago){
-                pago="transferencia bancaria";
-        }else{
-                pago= "pago con tarjeta";
+                pago = "transferencia bancaria";
+        } else {
+                pago = "pago con tarjeta";
         }
 
 		if (this.numComp > 0) {
             
-        System.out.println("************Venta Realizada***********" + 
-        "\n Fecha: " + getFechaCompra() +"\n Método de pago: " + pago  );
+        System.out.println("Fecha: " + getFechaCompra() + "\n" + "ID cliente: " + c.getCodigo() + "\n" + "Método de pago: " + pago + "\n\n");
 
 			for (int i = 0; i < this.numComp; i++) {
 				if(this.productos[i] != null){
-				s += this.productos[i].toString() + "\n\n";
-				precioTot += productos[i].getPvp();
+					s += this.productos[i].getCodigo() + "\n";
+					precioTot += productos[i].getPvp();
 				}
 			}
-			return s += "Precio total: " + precioTot+ "\n"  ;
+			return s += "\nPrecio total de la venta: " + precioTot + "\n"  ;
 		} else {
 			return "No hay productos en el carrito se ha anulado la venta.";
 		} 
