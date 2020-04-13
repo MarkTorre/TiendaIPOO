@@ -37,11 +37,11 @@ public class CarritoDeLaCompra {
 		if (this.numComp > 0) {
 			for (int i = 0; i < this.numComp; i++) {
 				if(productos[i] != null){
-				s += this.productos[i].toString() + "\n\n";
+				s += this.productos[i].toString() + "\n";
 				precioTot += productos[i].getPvp();
 				}
 			}
-			return s +="----------------------------------"+"\nPrecio total: " + precioTot+ "\n"  ;
+			return s +="\n----------------------------------"+"\nPrecio total: " + precioTot+ "\n"  ;
 		} else {
 			return "\t No hay productos en el carrito\n";
 		}
@@ -100,4 +100,3 @@ public class CarritoDeLaCompra {
 	}
 
 }
-
