@@ -32,7 +32,7 @@ public class Venta {
 
 		if (this.numComp > 0) {
             
-        System.out.println("Fecha: " + getFechaCompra() + "\n" + "ID cliente: " + c.getCodigo() + "\n" + "Método de pago: " + pago + "\n\n");
+        		s += "Fecha: " + getFechaCompra() + "\n" + "ID cliente: " + c.getCodigo() + "\n" + "Método de pago: " + pago + "\n\n";
 
 			for (int i = 0; i < this.numComp; i++) {
 				if(this.productos[i] != null){
