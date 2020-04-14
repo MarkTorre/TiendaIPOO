@@ -102,7 +102,11 @@ import java.util.Date;
 	
 	//8. Hecho
 	public void comprarCarro(int posicionCarro, boolean tipoPago){ //*falta actualizar el stock...
-	    this.listaCarrito[posicionCarro].comprar(tipoPago);
+		this.listaCarrito[posicionCarro].comprar(tipoPago);
+		/*LLAMAR SET VENTAS */
+		/*actualiza stock funcion aumentar reservas */
+		int 
+		actualizaStock(posicionCarro,);
 	}
 	
 	//9. Revisar
@@ -183,5 +187,6 @@ import java.util.Date;
 		} 
 		return false;
 	}
+
 
 }

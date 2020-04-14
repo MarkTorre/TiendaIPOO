@@ -11,7 +11,7 @@ public class MainTienda {
       Cliente arthur= new Cliente(7655421, "Arthut", "Shelby","1243412214132R");
       Cliente elephantMan = new Cliente(2131324, "Joseph", "Merrick", "3214123123"); 
       Cliente senyorX= new Cliente(4256235, "Senyor", "X", "32141233142O");
-
+/*  Añadir a lista Tienda Online */
       tiendaOnline.setCliente(thomas); 
       tiendaOnline.setCliente(arthur); 
       tiendaOnline.setCliente(elephantMan); 
@@ -24,7 +24,7 @@ public class MainTienda {
       tiendaOnline.setFabricante(amd);
       tiendaOnline.setFabricante(intel);
       tiendaOnline.setFabricante(apple);
-
+/*  Añadir a lista Tienda Online */
       //3.
      Componente procesador1 = new Componente(amd, 1000, "Procesador AMD RAEDON", 320.0);
      Componente procesador2= new Componente(intel, 1001, "Procesador Intel Core i7", 387.78);
@@ -56,20 +56,21 @@ public class MainTienda {
     //6. A medias 7.
     //(true/false --> Con Tarjeta/Sin Tarjeta)
     miCarrito.comprar(true);
-    
+    /*Actualizar Stock*/
     //8.
     System.out.println(tiendaOnline.showStockTienda());
 
     //9.
-
+      /*Borrar producto de una venta (devolucion) */
+        /*Borrar de todos los productos (devolucion total de la venta) */
     
     //10.
     System.out.println(tiendaOnline.showStockTienda());
 
     //11.
-
+    /*BUSCAR PRODUCTO QUE NO EXISTA */
     //12.
-
+    /* */
 
   }
 }
