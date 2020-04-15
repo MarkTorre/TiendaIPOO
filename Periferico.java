@@ -17,5 +17,5 @@ public class Periferico {
     
     public void setPuerto(int puerto) {
       this.puerto = puerto;
-	}
+    }
 }
