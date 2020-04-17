@@ -72,5 +72,58 @@ public class MainTienda {
     //12.
     /* */
 
+    /*Últimos tres puntos antes de los opcionales
+    * Nuevo fabricante
+	Fabricante hp = new Fabricante("HP", 4000, 609344564);
+	
+	* Nuevos productos
+	Ram ram1 = new Ram(amd, 1005, "G. Skill Aegis", 19.99, 4, "DDR3");
+	Flash flash1 = new Flash(amd, 1006, "Kingston HyperX Fury Blue", 27.0, 4, 1600);
+	DiscoDuro D1 = new DiscoDuro(intel, 1007, "Intel Consumer SSD", 154.38, 1000, "Interno");
+	
+	PlacaBase placa1 = new PlacaBase(intel, 1008, "Asus PRIME Z370", 159.9, 16, "Intel", "DIMM", 305, 244);
+	
+	Teclado teclado1 = new Teclado(apple, 1009, "Magic Keyboard", 99.0, "USB", "Español");
+	Raton raton1 = new Raton(apple, 1010, "Magic Mouse 2", 80.01, "Bluetooth", 0);
+	Impresora impresora1 = new Impresora(hp, 1011, "ColorLaser 150a", 145.36, "USB", "Laser");
+	
+	1. Añadir producto al stock
+	ProductoEnStock stockRam1 = new ProductoEnStock(ram1, 60);
+	ProductoEnStock stockFlash1 = new ProductoEnStock(flash1, 60);
+	ProductoEnStock stockD1 = new ProductoEnStock(D1, 40);
+	ProductoEnStock stockPlaca1 = new ProductoEnStock(placa1, 30);
+	ProductoEnStock stockTeclado1 = new ProductoEnStock(teclado1, 80);
+	ProductoEnStock stockRaton1 = new ProductoEnStock(raton1, 80);
+	ProductoEnStock stockImpresora1 = new ProductoEnStock(impresora1, 20);
+	
+	tiendaOnline.setProductoEnStock(stockRam1);
+	tiendaOnline.setProductoEnStock(stockFlash1);
+	tiendaOnline.setProductoEnStock(stockD1);
+	tiendaOnline.setProductoEnStock(stockPlaca1);
+	tiendaOnline.setProductoEnStock(stockTeclado1);
+	tiendaOnline.setProductoEnStock(stockRaton1);
+	tiendaOnline.setProductoEnStock(stockImpresora1);
+	
+	2. Crear carritos, añadir productos y comprarlos
+	CarritoDeLaCompra carrito2 = new CarritoDeLaCompra(now1, arthur);
+	carrito2.añadirProducto(ram1);
+	carrito2.añadirProducto(D1);
+	carrito2.añadirProducto(teclado1);
+	carrito2.añadirProducto(raton1);
+	
+	CarritoDeLaCompra carrito3 = new CarritoDeLaCompra(now1, senyorX);
+	carrito3.añadirProducto(flash1);
+	carrito3.añadirProducto(placa1);
+	carrito3.añadirProducto(impresora1);
+	
+	carrito2.comprar(True);
+	carrito3.comprar(False);
+	
+	3. Mostrar la info. de los nuevos componentes
+	System.out.println("Memoria RAM:\n" + ram1.toString() + "\n\n" + "Memoria FLASH:\n" + flash1.toString() + "\n\n" + "Disco duro:\n" + D1.toString() + "\n\n");
+	System.out.println("Placa base:\n" + placa1.toString() + "\n\n");
+	System.out.println("Teclado:\n" + teclado1.toString() + "\n\n" + "Ratón:\n" + raton1.toString() + "\n\n" + "Impresora:\n" + impresora1.toString() + "\n\n");
+    */
+    
   }
 }
