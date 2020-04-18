@@ -1,28 +1,18 @@
 
 class PlacaBase extends Componente{
-    private String tipoProcesador, tamaño, ranura;
- 
-    public PlacaBase(Fabricante fabricante, int codigo, String descripcion,
-     double pvp, String tipoProcesador, String tamaño, String ranura){
+    String procesador, ranura;
+    int ancho, largo;
+    
+    public PlacaBase(Fabricante fabricante, int codigo, String descripcion, double pvp, int tamaño String procesador, String ranura, int ancho, int largo){
         super(fabricante, codigo, descripcion, pvp);
-        this.tipoProcesador= tipoProcesador;
-        this.tamaño=tamaño;
-        this.ranura=ranura;
+        this.procesador = procesador;
+        this.ranura = ranura;
+        this.ancho = ancho;
+        this.largo = largo;
     }
 
     public String toString(){
-        return super.toString() +"Tipo de procesador: "+ this.tipoProcesador
-        +"Tamaño: "+ this.tamaño +"Ranura: "+ this.ranura;
+        return super.toString() + "Procesador: " + this.procesador + "\n" + "Ancho: " + this.ancho + "\n" + "Largo: " + this.largo + "\n" + "Ranura: " + this.ranura + "\n";
     }
     
-    public String getTipoProcesador(){
-        return this.tipoProcesador;
-    }
-
-    public String getTamaño(){
-        return this.tamaño;
-    }
-    public String getRanura(){
-        return this.ranura;
-    }
 }

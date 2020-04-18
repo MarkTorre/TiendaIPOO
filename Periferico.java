@@ -1,20 +1,21 @@
 
 public class Periferico extends Componente {
-    private String tipo;
+  private String puerto;
+  
+  public Periferico(Fabricante fabricante, int codigo, String descripcion, double pvp, String puerto){
+    super(fabricante, codigo, descripcion, pvp);
+    this.puerto = puerto;
+  }
+  
+     public String toString(){
+       return  super.toString() + "Puerto de comunicacion: " + this.puerto + "\n" ;
+   }
 
-    public Periferico(Fabricante fabricante, int codigo, String descripcion, double pvp, String tipo){
-        super(fabricante, codigo, descripcion, pvp);
-        this.tipo=tipo;
-
+    public String getPuerto(){
+      return this.puerto;
     }
-
-    public String toString(){
-        return super.toString()+ this.tipo+"\n\t";
+    
+    public void setPuerto(int puerto) {
+      this.puerto = puerto;
     }
-
-    public String getTipo(){
-        return this.tipo;
-    }
-
-
 }

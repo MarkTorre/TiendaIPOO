@@ -1,19 +1,22 @@
 
-public class Teclado extends Periferico {
-    private String idioma;
-
-    public Teclado(Fabricante fabricante, int codigo, String descripcion, double pvp, String tipo, String idioma){
-        super(fabricante, codigo, descripcion, pvp, tipo);
-        this.idioma=idioma;
+public class Teclado extends Componente{
+  String idioma;
+  
+  public Teclado(Fabricante fabricante, int codigo, String descripcion, double pvp, String puerto, String idioma){
+        super(fabricante, codigo, descripcion, pvp, puerto);
+        this.idioma = idioma; 
     }
-
-    public String toString(){
-        return super.toString() + this.idioma +"\n";
-    }
-
-    public String getIdioma(){
-        return this.idioma;
+  
+  public String toString(){
+        return  super.toString() + "Idioma: " + this.idioma + "\n" ;
+  }
+  
+  public String getIdioma(){
+      return this.idioma;
     }
     
-
+    public void setIdioma(int idioma) {
+      this.idioma = idioma;
+    }
+  
 }

@@ -1,19 +1,21 @@
 
-public class Raton extends Periferico{
-
-    private int numBotones;
-
-    public Raton(Fabricante fabricante, int codigo, String descripcion, double pvp, String tipo, int numBotones){
-        super(fabricante, codigo, descripcion, pvp, tipo);
-        this.numBotones=numBotones;
+public class Raton extends Componente {
+  int botones;
+  
+  public Raton(Fabricante fabricante, int codigo, String descripcion, double pvp, String puerto, int botones){
+        super(fabricante, codigo, descripcion, pvp, puerto);
+        this.botones = botones; 
     }
-
-    public String toString(){
-        return super.toString() + this.numBotones +"\n";
+  
+  public String toString(){
+        return  super.toString() + "Botones: " + this.botones + "\n" ;
+  }
+  
+  public String getBotones(){
+      return this.botones;
     }
-
-    public int getNumBotones(){
-        return this.numBotones;
+    
+    public void setBotones(int botones) {
+      this.botones = botones;
     }
-
 }
