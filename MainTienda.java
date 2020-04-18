@@ -48,6 +48,12 @@ public class MainTienda {
      //5.
      Date now1= new Date();
      CarritoDeLaCompra miCarrito = new CarritoDeLaCompra(now1, thomas);
+	miCarrito.añadirProducto(procesador1);
+	miCarrito.añadirProducto(procesador2);
+	miCarrito.añadirProducto(modulo);
+	miCarrito.añadirProducto(modulo);
+	miCarrito.añadirProducto(portatil);
+	miCarrito.añadirProducto(tablet);
 
 
       /*Llamar método añadir producto al carrito y el método de añadir carrito tienda online */
