@@ -24,7 +24,7 @@ public class Componente {
     public String toString(){
         return "\tProducto: " + getCodigo() + " " + getDescripcion() +
                 "\n\tPrecio: " + getPvp() + "\n\tFabricante: " + getFabricante().getNombre() +
-                "( " + getFabricante().getCodigo() + " )";
+                "( " + getFabricante().getCodigo() + " )\n";
 }
 
 /*----------------Métodos Setters ------------------*/

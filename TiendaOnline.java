@@ -101,30 +101,38 @@ import java.util.Date;
 	}
 	
 	//8. Hecho
-	public void comprarCarro(int posicionCarro, boolean tipoPago){ //*falta actualizar el stock...
-		this.listaCarrito[posicionCarro].comprar(tipoPago);
-		/*LLAMAR SET VENTAS */
-		/*actualiza stock funcion aumentar reservas */
-		int 
-		actualizaStock(posicionCarro,);
+	public void comprarCarro(int posicionCarro, boolean tipoPago){ 
+		Venta venta=this.listaCarrito[posicionCarro].comprar(tipoPago);
+		for(Componente comp:venta.getComponente()){
+			actualizaStock(comp.getCodigo(), -1);
+		}
+	
 	}
 	
 	//9. Revisar
-	/*
-	public void devolucioComponente(Date fecha, Cliente c, String codigoComponente){
+	
+	public boolean devolucioComponente(Date fecha, Cliente c, int codigoComponente){
 	        for(Venta venta: this.listaVentas){
 	            if(venta.getFechaCompra() == fecha && venta.getCliente() == c){
-	                venta.
-	                for(Componente comp: venta.getComponente()){
+					Componente [] compList = venta.getComponente();
+					int index=0;
+	                for(Componente comp: compList){
+						index++;
 	                    if(comp.getCodigo() == codigoComponente){
-	                        
+							if(index==compList.length-1){compList[index]=null;return true;}
+							for(int i=index; i<compList.length; i++){
+										compList[index]=compList[index+1];
+							}
+							return true;
 	                    }
-	                }
+					}
+				
 	            }
 	            
-	        }
+			}
+			return false;
 	}
-	*/
+
 	//10. Hecho
 	public String showStockTienda(){
 	    String s="\n";
