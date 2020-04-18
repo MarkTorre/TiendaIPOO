@@ -1,5 +1,5 @@
 
-public class Periferico extends Componente {
+public class Periferico extends Componente{
   private String puerto;
   
   public Periferico(Fabricante fabricante, int codigo, String descripcion, double pvp, String puerto){
