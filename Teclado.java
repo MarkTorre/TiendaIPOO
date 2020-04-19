@@ -1,5 +1,5 @@
 
-public class Teclado extends Componente{
+public class Teclado extends Periferico{
   String idioma;
   
   public Teclado(Fabricante fabricante, int codigo, String descripcion, double pvp, String puerto, String idioma){
@@ -15,7 +15,7 @@ public class Teclado extends Componente{
       return this.idioma;
     }
     
-    public void setIdioma(int idioma) {
+    public void setIdioma(String idioma) {
       this.idioma = idioma;
     }
   
