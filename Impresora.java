@@ -15,7 +15,7 @@ public class Impresora extends Periferico {
       return this.impresion;
     }
     
-    public void setImpresion(int impresion) {
+    public void setImpresion(String impresion) {
       this.impresion = impresion;
     }
   
