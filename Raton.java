@@ -1,5 +1,5 @@
 
-public class Raton extends Componente {
+public class Raton extends Periferico {
   int botones;
   
   public Raton(Fabricante fabricante, int codigo, String descripcion, double pvp, String puerto, int botones){
@@ -11,7 +11,7 @@ public class Raton extends Componente {
         return  super.toString() + "Botones: " + this.botones + "\n" ;
   }
   
-  public String getBotones(){
+  public int getBotones(){
       return this.botones;
     }
     
