@@ -15,7 +15,7 @@ public class Ram extends Memoria {
       return this.tipo;
     }
     
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
       this.tipo = tipo;
     }
 
