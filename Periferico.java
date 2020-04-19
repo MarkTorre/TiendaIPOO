@@ -15,7 +15,7 @@ public class Periferico extends Componente{
       return this.puerto;
     }
     
-    public void setPuerto(int puerto) {
+    public void setPuerto(String puerto) {
       this.puerto = puerto;
     }
 }
