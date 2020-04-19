@@ -1,5 +1,5 @@
 
-public class Impresora extends Componente {
+public class Impresora extends Periferico {
   String impresion;
   
   public Impresora(Fabricante fabricante, int codigo, String descripcion, double pvp, String puerto, String impresion){
