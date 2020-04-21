@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -168,21 +170,27 @@ import java.util.Date;
 	}
 	
 	//8. Hecho
-	public void comprarCarro(int posicionCarro, boolean tipoPago){ 
+	public Venta comprarCarro(int posicionCarro, boolean tipoPago){ 
 		Venta venta=this.listaCarrito[posicionCarro].comprar(tipoPago);
 		/*for(Componente comp:venta.getComponente()){
 			actualizaStock(comp.getCodigo(), -1);
 		}*/
-
+		
 		for(int i=0; i<venta.getComponente().length; i++){
+			
 			actualizaStock(venta.getComponente()[i].getCodigo(), -1);
 		}
+
+		return venta;
 	
 	}
 	
 	//9. Revisar
 	
 	public boolean devolucioComponente(Date fecha, Cliente c, int codigoComponente){
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy HH:mm:ss");
+		String f= formatter.format(fecha);
+        String f2;
 	        /*for(Venta venta: this.listaVentas){
 	            if(venta.getFechaCompra() == fecha && venta.getCliente() == c){
 					Componente [] compList = venta.getComponente();
@@ -203,7 +211,8 @@ import java.util.Date;
 			}*/
 
 			for(int i=0; i<numVenta; i++){
-				if(this.listaVentas[i].getFechaCompra()== fecha && this.listaVentas[i].getCliente()== c){
+				f2= formatter.format(this.listaVentas[i].getFechaCompra());
+				if(f2.contentEquals(f) && this.listaVentas[i].getCliente() == c){
 					Componente [] compList = this.listaVentas[i].getComponente();
 					for(int j=0; j<compList.length; j++){
 						if(compList[j].getCodigo() == codigoComponente){
@@ -291,11 +300,16 @@ import java.util.Date;
 	}
 	
 	public boolean eliminaVenta(Cliente c, Date d) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy HH:mm:ss");
+		String date= formatter.format(d);
+		String date2;
 		for(int i = 0; i < numVenta; i++) {
-			if(this.listaVentas[i].getFechaCompra() == d && this.listaVentas[i].getCliente() == c) {
+			date2= formatter.format(this.listaVentas[i].getFechaCompra());
+			if( date2.contentEquals(date) && this.listaVentas[i].getCliente() == c) {
 				for(int j = i; j < this.listaCarrito.length; j++) {
 					this.listaVentas[j] = this.listaVentas[j + 1];
 				}
+
 				for(int z=0; z< this.listaVentas[i].getComponente().length; z++){
 					actualizaStock(this.listaVentas[i].getComponente()[z].getCodigo(), 1);
 				}

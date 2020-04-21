@@ -12,7 +12,7 @@ public class CarritoDeLaCompra {
 	private int numComp=0;
 
 	//Atributo Classe (A.C)
-	public static int MaxBought= 2; //1000
+	public static int MaxBought= 100; //1000
 
 
 	// Constructor Vacio

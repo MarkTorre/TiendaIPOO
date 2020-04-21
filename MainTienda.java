@@ -1,4 +1,7 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class MainTienda {
   public static void main(String[] args){
@@ -64,25 +67,29 @@ public class MainTienda {
     	miCarrito.añadirProducto(portatil);
       miCarrito.añadirProducto(tablet);
      */
-
+   
 
       /*Llamar método añadir producto al carrito y el método de añadir carrito tienda online */
     
     
     //6. A medias 7.
     //(true/false --> Con Tarjeta/Sin Tarjeta)
-    tiendaOnline.comprarCarro(0, true);
+   
+    Venta vent= tiendaOnline.comprarCarro(0, true);
     /*miCarrito.comprar(true);*/
     /*Actualizar Stock*/
     //8.
+    System.out.println(vent.toString());
     System.out.println(tiendaOnline.showStockTienda());
 
     //9.
       /*Borrar producto de una venta (devolucion) */
-     
-      tiendaOnline.devolucioComponente(now1, thomas, 1002);
+      
+      if(tiendaOnline.devolucioComponente(vent.getFechaCompra(), thomas, 1002))
+      {System.out.println("Se ha cancelado");}else System.out.println("No se ha cancelado") ;
+  
         /*Borrar de todos los productos (devolucion total de la venta) */
-        tiendaOnline.eliminaVenta(thomas, now1);
+      tiendaOnline.eliminaVenta(thomas, vent.getFechaCompra());
     
     //10.
     System.out.println(tiendaOnline.showStockTienda());
@@ -144,6 +151,10 @@ public class MainTienda {
 	System.out.println("Placa base:\n" + placa1.toString() + "\n\n");
 	System.out.println("Teclado:\n" + teclado1.toString() + "\n\n" + "Ratón:\n" + raton1.toString() + "\n\n" + "Impresora:\n" + impresora1.toString() + "\n\n");
     */
+  
+    
+
+    
     
   }
 }
