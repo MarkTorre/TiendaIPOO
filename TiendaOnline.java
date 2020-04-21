@@ -162,7 +162,7 @@ import java.util.Date;
 		}*/
 		
 		for(int i=0; i<numVenta; i++){
-			s = s + v.toString();
+			s = s + this.listaVentas[i].toString();
 		}
 	    return s;
 	}
