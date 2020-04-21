@@ -47,13 +47,23 @@ public class MainTienda {
 
      //5.
      Date now1= new Date();
-     CarritoDeLaCompra miCarrito = new CarritoDeLaCompra(now1, thomas);
-	miCarrito.añadirProducto(procesador1);
-	miCarrito.añadirProducto(procesador2);
-	miCarrito.añadirProducto(modulo);
-	miCarrito.añadirProducto(modulo);
-	miCarrito.añadirProducto(portatil);
-	miCarrito.añadirProducto(tablet);
+     tiendaOnline.setCarritoDeLaCompra(thomas, now1);
+
+     tiendaOnline.añadirProductoCarro(thomas, procesador1);
+     tiendaOnline.añadirProductoCarro(thomas, procesador2);
+     tiendaOnline.añadirProductoCarro(thomas, modulo);
+     tiendaOnline.añadirProductoCarro(thomas, modulo);
+     tiendaOnline.añadirProductoCarro(thomas, portatil);
+     tiendaOnline.añadirProductoCarro(thomas, tablet);
+
+     /*CarritoDeLaCompra miCarrito = new CarritoDeLaCompra(now1, thomas);
+	    miCarrito.añadirProducto(procesador1);
+	    miCarrito.añadirProducto(procesador2);
+    	miCarrito.añadirProducto(modulo);
+    	miCarrito.añadirProducto(modulo);
+    	miCarrito.añadirProducto(portatil);
+      miCarrito.añadirProducto(tablet);
+     */
 
 
       /*Llamar método añadir producto al carrito y el método de añadir carrito tienda online */
@@ -61,14 +71,18 @@ public class MainTienda {
     
     //6. A medias 7.
     //(true/false --> Con Tarjeta/Sin Tarjeta)
-    miCarrito.comprar(true);
+    tiendaOnline.comprarCarro(0, true);
+    /*miCarrito.comprar(true);*/
     /*Actualizar Stock*/
     //8.
     System.out.println(tiendaOnline.showStockTienda());
 
     //9.
       /*Borrar producto de una venta (devolucion) */
+     
+      tiendaOnline.devolucioComponente(now1, thomas, 1002);
         /*Borrar de todos los productos (devolucion total de la venta) */
+        tiendaOnline.eliminaVenta(thomas, now1);
     
     //10.
     System.out.println(tiendaOnline.showStockTienda());

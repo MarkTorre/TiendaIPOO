@@ -10,63 +10,92 @@ import java.util.Date;
 	    private ProductoEnStock[] inventario;
 	    private Venta[] listaVentas;
 	    private int numCliente, numFabricante, numCarrito, numInventario, numVenta;
-	    private static int MaxCliente, MaxFabricante, MaxCarrito, MaxInventario, MaxVenta;
+	    private static int MaxCliente=10000, MaxFabricante=10000, MaxCarrito=10000, MaxInventario=10000, MaxVenta=10000;
 	
 	    public TiendaOnline(){
 	        this.listaCliente = new Cliente[MaxCliente];
 	        this.listaFabricante = new Fabricante[MaxFabricante];
 	        this.listaCarrito = new CarritoDeLaCompra[MaxCarrito];
 	        this.inventario = new ProductoEnStock[MaxInventario];
-	        this.listaVentas = new Venta[MaxVenta];
+			this.listaVentas = new Venta[MaxVenta];
+			this.numCliente=0;
+			this.numFabricante=0;
+			this.numCarrito=0;
+			this.numInventario=0;
+			this.numVenta=0;
 	    }
 	
 	/*--------Métodos SETTERS-----------*/
 	/*NOTA: condicionarlos para que no hayan 2 clientes */
 	public boolean setCliente(Cliente cliente){
-	    for(Cliente c : this.listaCliente){
+	    /*for(Cliente c : this.listaCliente){
 	            if(c.getCodigo() == cliente.getCodigo()){
 	                return false;
 	            }
-	    }
+		}*/
+		
+		for(int i =0;i<this.listaCliente.length; i++){
+			if(this.listaCliente[i] == cliente){return false;}
+		}
 	    this.listaCliente[numCliente]=cliente;
 	    this.numCliente++;
 	    return true;
 	}
 	
 	public String showClientes(){
-	    String s="\n\t";
+		String s="\n\t";
+		/*
 	    for(Cliente client: this.listaCliente){
 	        s= s + client.toString()+ "\n";
-	    }
+		}*/
+		
+		for(int i=0; i<numCliente; i++){
+			s= s + this.listaCliente[i].toString()+ "\n";
+		}
 	    return s;
 	}
 	
 	public boolean setFabricante(Fabricante fabricante){
-	    for(Fabricante f : this.listaFabricante){
+	   /* for(Fabricante f : this.listaFabricante){
 	        if(f.getCodigo() == fabricante.getCodigo()){
 	            return false;
 	        }
-	    }
+		}
+		*/
+		for(int i =0;i<this.listaFabricante.length; i++){
+			if(this.listaFabricante[i] == fabricante){return false;}
+		}
 	    this.listaFabricante[numFabricante]= fabricante;
 	    this.numFabricante++;
 	    return true;
 	}
 	
 	public String showFabricantes(){
-	    String s="\n\t";
+		String s="\n\t";
+		/*
 	    for(Fabricante f : this.listaFabricante){
 	        s= s + f.toString()+ "\n";
-	    }
+		}*/
+		
+		for(int i=0; i<numFabricante; i++){
+			s= s + this.listaFabricante[i].toString()+ "\n";
+		}
 	    return s;
 	}
-	
+
 	
 	public boolean setProductoEnStock(ProductoEnStock pStock){ 											//comparar códigos, sino compara direcciones de memoria
-	    for(ProductoEnStock componente : this.inventario){
+	    /*for(ProductoEnStock componente : this.inventario){
 	        if(componente.getComponente().getCodigo() == pStock.getComponente().getCodigo()){
 	            return false;
 	        }
-	    }
+		}*/
+		
+		for(int i=0; i<numInventario; i++){
+			if(this.inventario[i].getComponente().getCodigo() == pStock.getComponente().getCodigo()){
+				return false;
+			}
+		}
 	    this.inventario[numInventario] = pStock;
 	    this.numInventario++;
 	    return true;
@@ -74,18 +103,27 @@ import java.util.Date;
 	
 	//5.Añade el producto en el carro 
 	public void añadirProductoCarro(Cliente cliente, Componente producto){
-		for(CarritoDeLaCompra carrito :this.listaCarrito){
+		/*for(CarritoDeLaCompra carrito :this.listaCarrito){
 			if(carrito.getCliente() == cliente){
 				carrito.añadirProducto(producto);
+			}
+		}*/
+		for(int i=0; i<numCarrito; i++){
+			if(this.listaCarrito[i].getCliente()==cliente){
+				this.listaCarrito[i].añadirProducto(producto);
 			}
 		}
 
 	}
 	//5.Eliminar producto del carro
 	public void eliminarProductoCarro(Cliente cliente, int codigo){
-		for(CarritoDeLaCompra carrito: this.listaCarrito){
+		/*for(CarritoDeLaCompra carrito: this.listaCarrito){
 			if(carrito.getCliente() == cliente){
 				carrito.eliminarProducto(codigo);
+			}*/
+			for(int i=0; i<numCarrito; i++){
+				if(this.listaCarrito[i].getCliente() == cliente){
+					this.listaCarrito[i].eliminarProducto(codigo);
 			}
 		}
 	
@@ -93,12 +131,19 @@ import java.util.Date;
 
 	
 	public boolean setCarritoDeLaCompra(Cliente c, Date fecha){
-	    CarritoDeLaCompra carrito= new CarritoDeLaCompra(fecha, c);
-	    for(CarritoDeLaCompra listacarro: this.listaCarrito ){
+		
+		/*for(CarritoDeLaCompra listacarro: this.listaCarrito ){
 	        if(listacarro.getCliente() == carrito.getCliente()){
 	            return false;
 	        }
-	    }
+		}*/
+		
+		for(int i=0; i<numCarrito; i++){
+			if(this.listaCarrito[i].getCliente() == c){
+				return false;
+			}
+		}
+		CarritoDeLaCompra carrito= new CarritoDeLaCompra(fecha, c);
 	    this.listaCarrito[numCarrito]=carrito;
 	    this.numCarrito++;
 	    return true;
@@ -112,17 +157,25 @@ import java.util.Date;
 	
 	public String muestraVentas(Cliente c){   //acabado
 	    String s = "";
-	    for(Venta v : this.listaVentas){
+	    /*for(Venta v : this.listaVentas){
 	        s = s + v.toString();
-	    }
+		}*/
+		
+		for(int i=0; i<numVenta; i++){
+			s = s + v.toString();
+		}
 	    return s;
 	}
 	
 	//8. Hecho
 	public void comprarCarro(int posicionCarro, boolean tipoPago){ 
 		Venta venta=this.listaCarrito[posicionCarro].comprar(tipoPago);
-		for(Componente comp:venta.getComponente()){
+		/*for(Componente comp:venta.getComponente()){
 			actualizaStock(comp.getCodigo(), -1);
+		}*/
+
+		for(int i=0; i<venta.getComponente().length; i++){
+			actualizaStock(venta.getComponente()[i].getCodigo(), -1);
 		}
 	
 	}
@@ -130,7 +183,7 @@ import java.util.Date;
 	//9. Revisar
 	
 	public boolean devolucioComponente(Date fecha, Cliente c, int codigoComponente){
-	        for(Venta venta: this.listaVentas){
+	        /*for(Venta venta: this.listaVentas){
 	            if(venta.getFechaCompra() == fecha && venta.getCliente() == c){
 					Componente [] compList = venta.getComponente();
 					int index=0;
@@ -147,6 +200,22 @@ import java.util.Date;
 				
 	            }
 	            
+			}*/
+
+			for(int i=0; i<numVenta; i++){
+				if(this.listaVentas[i].getFechaCompra()== fecha && this.listaVentas[i].getCliente()== c){
+					Componente [] compList = this.listaVentas[i].getComponente();
+					for(int j=0; j<compList.length; j++){
+						if(compList[j].getCodigo() == codigoComponente){
+							if(j== compList.length-1){compList[j]=null; return true;}
+							for(int z=j; z<compList.length; z++){
+								compList[z]=compList[z+1];
+							}
+							return true;
+						}
+					}
+				}
+
 			}
 			return false;
 	}
@@ -154,22 +223,38 @@ import java.util.Date;
 	//10. Hecho
 	public String showStockTienda(){
 	    String s="\n";
-	    for(ProductoEnStock prodStock: this.inventario){
+	    /*for(ProductoEnStock prodStock: this.inventario){
 	        s= s+ "Producto en Stock: \n" + prodStock.getComponente().getDescripcion()+
 	        "\n\t Código interno: " + prodStock.getComponente().getCodigo()+
 	        "\n\t Cantidad disponible: " + prodStock.getUdsDisponibles();
-	    }
+		}*/
+		
+		for(int i=0; i<numInventario; i++){
+			s= s+ "Producto en Stock: \n" + this.inventario[i].getComponente().getDescripcion()+
+	        "\n\t Código interno: " + this.inventario[i].getComponente().getCodigo()+
+	        "\n\t Cantidad disponible: " + this.inventario[i].getUdsDisponibles();
+		}
 	    return s;
 	}
 	
 	public void actualizaStock(int codigo, int unidades) {
-		for(ProductoEnStock producto : this.inventario) {
+		/*for(ProductoEnStock producto : this.inventario) {
 			if(producto.getComponente().getCodigo() == codigo) {
 				producto.setUdsDisponibles(producto.getUdsDisponibles() + unidades);
 			}
 			
 			if(producto.getUdsDisponibles() <= 0) {
 				producto.setUdsDisponibles(0);
+			}
+		}*/
+
+		for(int i=0; i<numInventario; i++){
+			if(this.inventario[i].getComponente().getCodigo() == codigo){
+				this.inventario[i].setUdsDisponibles(this.inventario[i].getUdsDisponibles() + unidades);
+			}
+
+			if(this.inventario[i].getUdsDisponibles()<=0){
+				this.inventario[i].setUdsDisponibles(0);
 			}
 		}
 	}
@@ -178,8 +263,11 @@ import java.util.Date;
 		String s = "";
 		
 		if(this.listaCarrito.length > 0) {
-			for(CarritoDeLaCompra carrito : this.listaCarrito) {
+			/*for(CarritoDeLaCompra carrito : this.listaCarrito) {
 				s += carrito.toString() + "\n";
+			}*/
+			for(int i=0; i< numCarrito; i++){
+				s += this.listaCarrito[i].toString() + "\n";
 			}
 		} else {
 			s = "No hay carritos de la compra.";
@@ -202,7 +290,7 @@ import java.util.Date;
 	}
 	
 	public boolean eliminaVenta(Cliente c, Date d) {
-		for(int i = 0; i < this.listaVentas.length; i++) {
+		for(int i = 0; i < numVenta; i++) {
 			if(this.listaVentas[i].getFechaCompra() == d && this.listaVentas[i].getCliente() == c) {
 				for(int j = i; j < this.listaCarrito.length; j++) {
 					this.listaVentas[j] = this.listaVentas[j + 1];
