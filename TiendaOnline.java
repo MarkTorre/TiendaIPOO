@@ -72,7 +72,25 @@ import java.util.Date;
 	    return true;
 	}
 	
+	//5.Añade el producto en el carro 
+	public void añadirProductoCarro(Cliente cliente, Componente producto){
+		for(CarritoDeLaCompra carrito :this.listaCarrito){
+			if(carrito.getCliente() == cliente){
+				carrito.añadirProducto(producto);
+			}
+		}
+
+	}
+	//5.Eliminar producto del carro
+	public void eliminarProductoCarro(Cliente cliente, int codigo){
+		for(CarritoDeLaCompra carrito: this.listaCarrito){
+			if(carrito.getCliente() == cliente){
+				carrito.eliminarProducto(codigo);
+			}
+		}
 	
+	}
+
 	
 	public boolean setCarritoDeLaCompra(Cliente c, Date fecha){
 	    CarritoDeLaCompra carrito= new CarritoDeLaCompra(fecha, c);

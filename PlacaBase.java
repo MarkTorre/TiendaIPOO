@@ -3,7 +3,7 @@ class PlacaBase extends Componente{
     String procesador, ranura;
     int ancho, largo;
     
-    public PlacaBase(Fabricante fabricante, int codigo, String descripcion, double pvp, int tamaño String procesador, String ranura, int ancho, int largo){
+    public PlacaBase(Fabricante fabricante, int codigo, String descripcion, double pvp, int tamaño, String procesador, String ranura, int ancho, int largo){
         super(fabricante, codigo, descripcion, pvp);
         this.procesador = procesador;
         this.ranura = ranura;
