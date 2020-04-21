@@ -152,7 +152,7 @@ import java.util.Date;
 	}
 	
 	public boolean setVentas(Venta v){
-	    if(numVenta< MaxVenta){ this.listaVentas[numVenta] = v; return true;}
+	    if(numVenta< MaxVenta){ this.listaVentas[numVenta] = v; this.numVenta++; return true;}
 	    return false;
 	   
 	}
@@ -172,17 +172,14 @@ import java.util.Date;
 	//8. Hecho
 	public Venta comprarCarro(int posicionCarro, boolean tipoPago){ 
 		Venta venta=this.listaCarrito[posicionCarro].comprar(tipoPago);
+		setVentas(venta);
 		/*for(Componente comp:venta.getComponente()){
 			actualizaStock(comp.getCodigo(), -1);
 		}*/
-		
 		for(int i=0; i<venta.getComponente().length; i++){
-			
-			actualizaStock(venta.getComponente()[i].getCodigo(), -1);
+			if(venta.getComponente()[i] != null){actualizaStock(venta.getComponente()[i].getCodigo(), -1);}
 		}
-
 		return venta;
-	
 	}
 	
 	//9. Revisar
@@ -210,6 +207,7 @@ import java.util.Date;
 	            
 			}*/
 
+			System.out.println(numVenta);
 			for(int i=0; i<numVenta; i++){
 				f2= formatter.format(this.listaVentas[i].getFechaCompra());
 				if(f2.contentEquals(f) && this.listaVentas[i].getCliente() == c){
