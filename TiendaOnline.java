@@ -211,6 +211,7 @@ import java.util.Date;
 							for(int z=j; z<compList.length; z++){
 								compList[z]=compList[z+1];
 							}
+							actualizaStock(codigoComponente, 1);
 							return true;
 						}
 					}
@@ -230,9 +231,9 @@ import java.util.Date;
 		}*/
 		
 		for(int i=0; i<numInventario; i++){
-			s= s+ "Producto en Stock: \n" + this.inventario[i].getComponente().getDescripcion()+
-	        "\n\t Código interno: " + this.inventario[i].getComponente().getCodigo()+
-	        "\n\t Cantidad disponible: " + this.inventario[i].getUdsDisponibles();
+			s= s+ "\nProducto en Stock: \n\t" + this.inventario[i].getComponente().getDescripcion()+
+	        "\n\tCódigo interno: " + this.inventario[i].getComponente().getCodigo()+
+	        "\n\tCantidad disponible: " + this.inventario[i].getUdsDisponibles();
 		}
 	    return s;
 	}
@@ -294,6 +295,9 @@ import java.util.Date;
 			if(this.listaVentas[i].getFechaCompra() == d && this.listaVentas[i].getCliente() == c) {
 				for(int j = i; j < this.listaCarrito.length; j++) {
 					this.listaVentas[j] = this.listaVentas[j + 1];
+				}
+				for(int z=0; z< this.listaVentas[i].getComponente().length; z++){
+					actualizaStock(this.listaVentas[i].getComponente()[z].getCodigo(), 1);
 				}
 				this.numVenta--;
 				return true;
