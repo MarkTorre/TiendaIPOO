@@ -62,6 +62,10 @@ public class Venta {
     public Date getFechaCompra(){
         return this.fecha;
     }
+
+    public int getNumComp(){
+        return this.numComp;
+    }
 /******************Métodos Setters*****************/
   
     public void setComponente(Componente[] productos){

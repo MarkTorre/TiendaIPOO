@@ -214,10 +214,12 @@ import java.util.Date;
 					Componente [] compList = this.listaVentas[i].getComponente();
 					for(int j=0; j<compList.length; j++){
 						if(compList[j].getCodigo() == codigoComponente){
-							if(j== compList.length-1){compList[j]=null; return true;}
-							for(int z=j; z<compList.length; z++){
+							if(j==compList.length){compList[j]=null;System.out.println(j); return true;}
+							for(int z=j; z<compList.length-1; z++){
+								System.out.println(z);
 								compList[z]=compList[z+1];
 							}
+							
 							actualizaStock(codigoComponente, 1);
 							return true;
 						}
