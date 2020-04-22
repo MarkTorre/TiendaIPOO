@@ -8,7 +8,7 @@ public class Ram extends Memoria {
     }
 
     public String toString(){
-        return  super.toString() + "Tipo: " + this.tipo + "\n" ;
+        return  super.toString() + "\ttipo: " + this.tipo + "\n" ;
     }
     
     public String getTipo(){

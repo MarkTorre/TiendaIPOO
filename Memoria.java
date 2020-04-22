@@ -9,7 +9,7 @@ public class Memoria extends Componente{
    }
 
    public String toString(){
-       return  super.toString() + "Tamaño: " + this.tamaño + "\n" ;
+       return  super.toString() + "\tTamaño: " + this.tamaño + "\n" ;
    }
 
     public int getTamaño(){

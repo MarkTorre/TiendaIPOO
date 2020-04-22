@@ -4,7 +4,7 @@ public class ProductoEnStock {
 	
     
     public ProductoEnStock(Componente componente, int udsDisponibles){
-        this.componente = componente;  //no creamos un nuevo componente porque queremos solo la referencia
+        this.componente = componente; 
         this.udsDisponibles = udsDisponibles;
         this.udsReservadas = 0;
     }

@@ -8,7 +8,7 @@ public class Impresora extends Periferico {
     }
   
   public String toString(){
-        return  super.toString() + "Impresion: " + this.impresion + "\n" ;
+        return  super.toString() + "\tImpresion: " + this.impresion + "\n" ;
   }
   
   public String getImpresion(){

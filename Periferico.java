@@ -8,7 +8,7 @@ public class Periferico extends Componente{
   }
   
      public String toString(){
-       return  super.toString() + "Puerto de comunicacion: " + this.puerto + "\n" ;
+       return  super.toString() + "\tPuerto de comunicacion: " + this.puerto + "\n" ;
    }
 
     public String getPuerto(){

@@ -72,7 +72,10 @@ public class CarritoDeLaCompra {
 	}
 
 	public Venta comprar(boolean pago) {
-		Componente[] componentes= this.productos;
+		Componente[] componentes= new Componente[MaxBought];
+		for(int i=0; i<this.numComp; i++){
+			componentes[i]= this.productos[i];
+		}
 		Date now= new Date();
 		int numerocompra = this.numComp;
 		Venta v = new Venta(componentes, pago, this.c, now, numerocompra);

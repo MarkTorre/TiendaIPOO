@@ -12,7 +12,7 @@ class PlacaBase extends Componente{
     }
 
     public String toString(){
-        return super.toString() + "Procesador: " + this.procesador + "\n" + "Ancho: " + this.ancho + "\n" + "Largo: " + this.largo + "\n" + "Ranura: " + this.ranura + "\n";
+        return super.toString() + "\tProcesador: " + this.procesador + "\n\t" + "Ancho: " + this.ancho + "\n\t" + "Largo: " + this.largo + "\n\t" + "Ranura: " + this.ranura + "\n";
     }
     
 }

@@ -8,7 +8,7 @@ public class Teclado extends Periferico{
     }
   
   public String toString(){
-        return  super.toString() + "Idioma: " + this.idioma + "\n" ;
+        return  super.toString() + "\tIdioma: " + this.idioma + "\n" ;
   }
   
   public String getIdioma(){

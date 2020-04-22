@@ -8,7 +8,7 @@ public class Flash extends Memoria{
     }
 
     public String toString(){
-        return  super.toString() + "Velocidad: " + this.velocidad + "\n";
+        return  super.toString() + "\tVelocidad: " + this.velocidad + "\n";
     }
 
 }

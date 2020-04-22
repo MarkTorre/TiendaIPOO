@@ -8,7 +8,7 @@ public class Raton extends Periferico {
     }
   
   public String toString(){
-        return  super.toString() + "Botones: " + this.botones + "\n" ;
+        return  super.toString() + "\tBotones: " + this.botones + "\n" ;
   }
   
   public int getBotones(){
