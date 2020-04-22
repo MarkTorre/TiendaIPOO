@@ -27,6 +27,9 @@ import java.util.Date;
 			this.numVenta=0;
 	    }
 	
+		public Venta[] getVenta(){
+			return this.listaVentas;
+		}
 	/*--------Métodos SETTERS-----------*/
 	/*NOTA: condicionarlos para que no hayan 2 clientes */
 	public boolean setCliente(Cliente cliente){
@@ -206,21 +209,19 @@ import java.util.Date;
 	            }
 	            
 			}*/
-
-			System.out.println(numVenta);
 			for(int i=0; i<numVenta; i++){
 				f2= formatter.format(this.listaVentas[i].getFechaCompra());
 				if(f2.contentEquals(f) && this.listaVentas[i].getCliente() == c){
-					System.out.println("DEBUG:");
 					Componente [] compList = this.listaVentas[i].getComponente();
 					for(int j=0; j<compList.length; j++){
 						if(compList[j].getCodigo() == codigoComponente){
-							if(j==compList.length-1){compList[j]=null;System.out.println(j); return true;}
-							for(int z=j; z<compList.length-1; z++){
-								System.out.println("DEBUG: "+z);
+							if(j==this.listaVentas[i].getNumComp()-1){compList[j]=null; return true;}
+							for(int z=j; z<this.listaVentas[i].getNumComp()-1; z++){
 								compList[z]=compList[z+1];
 							}
 							
+							int numcomp = this.listaVentas[i].getNumComp();
+							this.listaVentas[i].setNumComp(numcomp-1);
 							actualizaStock(codigoComponente, 1);
 							return true;
 						}
@@ -307,13 +308,19 @@ import java.util.Date;
 		for(int i = 0; i < numVenta; i++) {
 			date2= formatter.format(this.listaVentas[i].getFechaCompra());
 			if( date2.contentEquals(date) && this.listaVentas[i].getCliente() == c) {
-				if(i == this.listaVentas.length-1){ }
-				for(int j = i; j < this.listaCarrito.length-1; j++) {
-					this.listaVentas[j] = this.listaVentas[j + 1];
-				}
+				if(i == numVenta-1){ 
+					for(int z=0; z< this.listaVentas[i].getNumComp(); z++){
 
-				for(int z=0; z< this.listaVentas[i].getComponente().length; z++){
+						actualizaStock(this.listaVentas[i].getComponente()[z].getCodigo(), 1);
+					}
+					this.listaVentas[i]=null;
+					this.numVenta--;
+					return true; }
+				for(int z=0; z< this.listaVentas[i].getNumComp(); z++){
 					actualizaStock(this.listaVentas[i].getComponente()[z].getCodigo(), 1);
+				}
+				for(int j = i; j < numCarrito-1; j++) {
+					this.listaVentas[j] = this.listaVentas[j + 1];
 				}
 				this.numVenta--;
 				return true;
@@ -321,6 +328,4 @@ import java.util.Date;
 		} 
 		return false;
 	}
-
-
 }

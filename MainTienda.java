@@ -4,6 +4,13 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class MainTienda {
+  
+  public static void unidadesDisponibles(ProductoEnStock stockProducto, TiendaOnline tiendaOnline, Cliente c, Componente comp){
+    if(stockProducto.getUdsDisponibles() > stockProducto.getUdsReservadas()) {
+      tiendaOnline.añadirProductoCarro(c, comp);
+      stockProducto.setUdsReservadas(stockProducto.getUdsReservadas() + 1);
+    }
+  }
   public static void main(String[] args){
       //1.
       TiendaOnline tiendaOnline= new TiendaOnline();
@@ -52,22 +59,12 @@ public class MainTienda {
      
      tiendaOnline.setCarritoDeLaCompra(thomas);
 
-     tiendaOnline.añadirProductoCarro(thomas, procesador1);
-     tiendaOnline.añadirProductoCarro(thomas, procesador2);
-     tiendaOnline.añadirProductoCarro(thomas, modulo);
-     tiendaOnline.añadirProductoCarro(thomas, modulo);
-     tiendaOnline.añadirProductoCarro(thomas, portatil);
-     tiendaOnline.añadirProductoCarro(thomas, tablet);
-
-     /*CarritoDeLaCompra miCarrito = new CarritoDeLaCompra(now1, thomas);
-	    miCarrito.añadirProducto(procesador1);
-	    miCarrito.añadirProducto(procesador2);
-    	miCarrito.añadirProducto(modulo);
-    	miCarrito.añadirProducto(modulo);
-    	miCarrito.añadirProducto(portatil);
-      miCarrito.añadirProducto(tablet);
-     */
-   
+     unidadesDisponibles(stockProcesador1, tiendaOnline, thomas, procesador1);
+     unidadesDisponibles(stockProcesador2, tiendaOnline, thomas, procesador2);
+     unidadesDisponibles(stockModulo, tiendaOnline, thomas, modulo);
+     unidadesDisponibles(stockModulo, tiendaOnline, thomas, modulo);
+     unidadesDisponibles(stockPortatil, tiendaOnline, thomas, portatil);
+     unidadesDisponibles(stockTablet, tiendaOnline, thomas, tablet);
 
       /*Llamar método añadir producto al carrito y el método de añadir carrito tienda online */
     
@@ -83,13 +80,16 @@ public class MainTienda {
     System.out.println(tiendaOnline.showStockTienda());
 
     //9.
-      /*Borrar producto de una venta (devolucion) */
+      /*Borrar producto de una venta (devolucion) 
+      vent.getFechaCompra()
+      */
       
-      if(tiendaOnline.devolucioComponente(vent.getFechaCompra(), thomas, 1002))
-      {System.out.println("Se ha cancelado");}else System.out.println("No se ha cancelado") ;
-  
-        /*Borrar de todos los productos (devolucion total de la venta) */
-      tiendaOnline.eliminaVenta(thomas, vent.getFechaCompra());
+    if(tiendaOnline.devolucioComponente(tiendaOnline.getVenta()[0].getFechaCompra(), thomas, 1002))
+    {System.out.println("Se ha cancelado");}else System.out.println("No se ha cancelado") ;
+
+    System.out.println(tiendaOnline.showStockTienda());
+    /*Borrar de todos los productos (devolucion total de la venta) */
+    tiendaOnline.eliminaVenta(thomas, tiendaOnline.getVenta()[0].getFechaCompra());
     
     //10.
     System.out.println(tiendaOnline.showStockTienda());

@@ -4,7 +4,7 @@ public class Venta {
     //Atributos Objeto(aA.O)
     private Date fecha;
     private Componente[] productos;
-    public int numComp;
+    private int numComp;
     private Cliente c;
     private  boolean metodopago;
     //Constructor Venta
