@@ -132,8 +132,8 @@ import java.util.Date;
 	}
 
 	
-	public boolean setCarritoDeLaCompra(Cliente c, Date fecha){
-		
+	public boolean setCarritoDeLaCompra(Cliente c){
+		Date fecha= new Date();
 		/*for(CarritoDeLaCompra listacarro: this.listaCarrito ){
 	        if(listacarro.getCliente() == carrito.getCliente()){
 	            return false;
@@ -211,12 +211,13 @@ import java.util.Date;
 			for(int i=0; i<numVenta; i++){
 				f2= formatter.format(this.listaVentas[i].getFechaCompra());
 				if(f2.contentEquals(f) && this.listaVentas[i].getCliente() == c){
+					System.out.println("DEBUG:");
 					Componente [] compList = this.listaVentas[i].getComponente();
 					for(int j=0; j<compList.length; j++){
 						if(compList[j].getCodigo() == codigoComponente){
-							if(j==compList.length){compList[j]=null;System.out.println(j); return true;}
+							if(j==compList.length-1){compList[j]=null;System.out.println(j); return true;}
 							for(int z=j; z<compList.length-1; z++){
-								System.out.println(z);
+								System.out.println("DEBUG: "+z);
 								compList[z]=compList[z+1];
 							}
 							
@@ -306,7 +307,8 @@ import java.util.Date;
 		for(int i = 0; i < numVenta; i++) {
 			date2= formatter.format(this.listaVentas[i].getFechaCompra());
 			if( date2.contentEquals(date) && this.listaVentas[i].getCliente() == c) {
-				for(int j = i; j < this.listaCarrito.length; j++) {
+				if(i == this.listaVentas.length-1){ }
+				for(int j = i; j < this.listaCarrito.length-1; j++) {
 					this.listaVentas[j] = this.listaVentas[j + 1];
 				}
 

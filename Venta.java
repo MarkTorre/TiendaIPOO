@@ -66,6 +66,7 @@ public class Venta {
     public int getNumComp(){
         return this.numComp;
     }
+
 /******************Métodos Setters*****************/
   
     public void setComponente(Componente[] productos){
@@ -84,4 +85,7 @@ public class Venta {
         this.fecha= fecha;
     };
 
+    public void setNumComp(int num){
+        this.numComp= num;
+    }
 }

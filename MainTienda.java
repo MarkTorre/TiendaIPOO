@@ -49,8 +49,8 @@ public class MainTienda {
      tiendaOnline.setProductoEnStock(stockTablet);
 
      //5.
-     Date now1= new Date();
-     tiendaOnline.setCarritoDeLaCompra(thomas, now1);
+     
+     tiendaOnline.setCarritoDeLaCompra(thomas);
 
      tiendaOnline.añadirProductoCarro(thomas, procesador1);
      tiendaOnline.añadirProductoCarro(thomas, procesador2);
