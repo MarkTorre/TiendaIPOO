@@ -11,6 +11,15 @@ public class MainTienda {
       stockProducto.setUdsReservadas(stockProducto.getUdsReservadas() + 1);
     }
   }
+
+  public static String infoComponente(int codigoComp,TiendaOnline tiendaOnline){
+  for(int i=0; i < tiendaOnline.getNumInventario(); i++){  
+      if(codigoComp == tiendaOnline.getStock()[i].getComponente().getCodigo()){
+        return "\nComponente Encontrado: \n"+ tiendaOnline.getStock()[i].getComponente().toString();
+      }
+    }
+    return "El componente no existe";
+  }
   public static void main(String[] args){
       //1.
       TiendaOnline tiendaOnline= new TiendaOnline();
@@ -57,6 +66,10 @@ public class MainTienda {
 
      //5.
      
+     
+
+     if(tiendaOnline.verificaCliente(thomas)){
+ 
      tiendaOnline.setCarritoDeLaCompra(thomas);
 
      unidadesDisponibles(stockProcesador1, tiendaOnline, thomas, procesador1);
@@ -64,7 +77,7 @@ public class MainTienda {
      unidadesDisponibles(stockModulo, tiendaOnline, thomas, modulo);
      unidadesDisponibles(stockModulo, tiendaOnline, thomas, modulo);
      unidadesDisponibles(stockPortatil, tiendaOnline, thomas, portatil);
-     unidadesDisponibles(stockTablet, tiendaOnline, thomas, tablet);
+     unidadesDisponibles(stockTablet, tiendaOnline, thomas, tablet);}
 
       /*Llamar método añadir producto al carrito y el método de añadir carrito tienda online */
     
@@ -83,7 +96,7 @@ public class MainTienda {
       /*Borrar producto de una venta (devolucion) 
       vent.getFechaCompra()
       */
-      
+if(tiendaOnline.verificaCliente(thomas)){
     if(tiendaOnline.devolucioComponente(tiendaOnline.getVenta()[0].getFechaCompra(), thomas, 1002))
     {System.out.println("Se ha cancelado");}else System.out.println("No se ha cancelado") ;
 
@@ -93,9 +106,12 @@ public class MainTienda {
     
     //10.
     System.out.println(tiendaOnline.showStockTienda());
+    }
 
     //11.
-    /*BUSCAR PRODUCTO QUE NO EXISTA */
+    System.out.println(infoComponente(1002, tiendaOnline));
+    System.out.println(infoComponente(4832142, tiendaOnline));
+
     //12.
     /* */
 

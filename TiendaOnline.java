@@ -30,6 +30,14 @@ import java.util.Date;
 		public Venta[] getVenta(){
 			return this.listaVentas;
 		}
+
+		public ProductoEnStock[] getStock(){
+			return this.inventario;
+		}
+
+		public int getNumInventario() {
+			return this.numInventario;
+		}
 	/*--------Métodos SETTERS-----------*/
 	/*NOTA: condicionarlos para que no hayan 2 clientes */
 	public boolean setCliente(Cliente cliente){
@@ -328,4 +336,22 @@ import java.util.Date;
 		} 
 		return false;
 	}
+
+	public boolean verificaCliente(Cliente c) {
+        for(Cliente cliente : this.listaCliente) {
+            if(cliente.getCodigo() == c.getCodigo()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificaFabricante(Fabricante f) {
+        for(Fabricante fabricante : this.listaFabricante) {
+            if(fabricante.getCodigo() == f.getCodigo()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
