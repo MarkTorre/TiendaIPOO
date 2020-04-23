@@ -12,7 +12,7 @@ public class TiendaOnline {
 	private ProductoEnStock[] inventario;
 	private Venta[] listaVentas;
 	private int numCliente, numFabricante, numCarrito, numInventario, numVenta;
-	private static int MaxCliente=10000, MaxFabricante=10000, MaxCarrito=10000, MaxInventario=10000, MaxVenta=10000;
+	private static int MaxCliente=1000, MaxFabricante=1000, MaxCarrito=1000, MaxInventario=1000, MaxVenta=1000;
 	
 	public TiendaOnline(){
 		this.listaCliente = new Cliente[MaxCliente];
